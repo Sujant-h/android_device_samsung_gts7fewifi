@@ -7,6 +7,10 @@ DEVICE_PATH := device/samsung/gts7fewifi
 
 include device/samsung/sm7325-common/BoardConfigCommon.mk
 
+# Partitions (PIT SM-T733, overrides Galaxy A52s values from sm7325-common)
+BOARD_RECOVERYIMAGE_PARTITION_SIZE    := 101584896
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 69206016
+
 # Kernel
 TARGET_KERNEL_CONFIG        := vendor/lineage-gts7fewifi_defconfig
 
