@@ -122,4 +122,4 @@ on property:sys.sysctl.zram_balance_ratio=*
 # would get 512m. This file is imported after init.target.rc, so this action
 # runs later and restores the build.prop value. Keep in sync with device.mk.
 on property:vendor.display.lcd_density=640
-    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapgrowthlimit 192m
