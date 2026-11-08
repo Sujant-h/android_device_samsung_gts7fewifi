@@ -23,6 +23,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+# Dalvik heap: 4 GB RAM, use the AOSP 4 GB value instead of the 6 GB
+# profile inherited from sm7325-common (256m). Keep in sync with
+# init.gts7fewifi.rc (lcd_density 640 override).
+PRODUCT_VENDOR_PROPERTIES += \
+    dalvik.vm.heapgrowthlimit=192m
+
 # Init files
 PRODUCT_PACKAGES += \
     init.gts7fewifi.rc \

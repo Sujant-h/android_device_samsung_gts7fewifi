@@ -119,7 +119,7 @@ on property:sys.sysctl.zram_balance_ratio=*
 # (fb width 1600, real density 340). Zygote starts before early-boot, so after a
 # normal boot apps get the build.prop value, but after a framework restart they
 # would get 512m. This file is imported after init.target.rc, so this action
-# runs later and restores the build.prop value (256m from the 6 GB heap
-# profile in vendor/build.prop). Keep both values the same.
+# runs later and restores the build.prop value. Keep in sync with
+# dalvik.vm.heapgrowthlimit in device.mk.
 on property:vendor.display.lcd_density=640
-    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapgrowthlimit 192m
