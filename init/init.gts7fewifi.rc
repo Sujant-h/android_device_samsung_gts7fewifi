@@ -109,7 +109,6 @@ on boot
 
 # SWAP
 on boot
-    write /proc/sys/vm/swappiness 160
     write /proc/sys/vm/page-cluster 0
 
 on property:sys.sysctl.zram_balance_ratio=*
