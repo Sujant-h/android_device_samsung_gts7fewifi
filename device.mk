@@ -29,6 +29,13 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_VENDOR_PROPERTIES += \
     dalvik.vm.heapgrowthlimit=192m
 
+# Rest of the AOSP 4 GB profile (frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
+# instead of the 6 GB values (16m / 0.5 / 32m).
+PRODUCT_VENDOR_PROPERTIES += \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heaptargetutilization=0.6 \
+    dalvik.vm.heapmaxfree=16m
+
 # Init files
 PRODUCT_PACKAGES += \
     init.gts7fewifi.rc \
