@@ -12,7 +12,8 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE    := 101584896
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 69206016
 
 # Kernel
-TARGET_KERNEL_CONFIG        := vendor/lineage-gts7fewifi_defconfig
+TARGET_KERNEL_CONFIG        := vendor/lineage-gts7fewifi_defconfig \
+                               vendor/mglru.config
 
 # Kernel modules
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
