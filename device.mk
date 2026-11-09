@@ -36,6 +36,13 @@ PRODUCT_VENDOR_PROPERTIES += \
     dalvik.vm.heaptargetutilization=0.6 \
     dalvik.vm.heapmaxfree=16m
 
+# LMKD
+# Disable watermark-based LOW_MEM kills (lmkd only uses them for
+# lowmem_min_oom_score <= 1000). Kills then rely on PSI, swap and thrashing.
+# Measured on 4 GB: cold starts 13.4 -> 0.2 of 24, kills -60 %, PSI full +16 %.
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.lmk.lowmem_min_oom_score=1001
+
 # Init files
 PRODUCT_PACKAGES += \
     init.gts7fewifi.rc \
