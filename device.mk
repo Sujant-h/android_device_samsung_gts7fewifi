@@ -43,6 +43,16 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.lmk.lowmem_min_oom_score=1001
 
+# Estimate usable swap as min(SwapFree, 2 x easily available memory)
+# instead of the default ratio 1 (lmkd.cpp get_free_swap). With zram at
+# 75 % the default treats swap as full long before it is and kills cached
+# apps (LOW_MEM_AND_SWAP). Measured with zram 75 %, n = 6 vs. Build 6:
+# kills -80 %, cold starts 2.3 -> 0 of 24, PSI and p99 not worse.
+# Ratio 0 (SwapFree only) removed the only active kill path and cost
+# PSI full +10 % and SystemUI p99 +28 %.
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.lmk.swap_compression_ratio=2
+
 # Init files
 PRODUCT_PACKAGES += \
     init.gts7fewifi.rc \
