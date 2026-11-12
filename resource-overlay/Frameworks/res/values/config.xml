@@ -130,4 +130,9 @@
          rates are available from hardware composer. Only has an effect if the value is
          non-zero. -->
     <integer name="config_defaultPeakRefreshRate">60</integer>
+
+    <!-- Credential Manager hybrid service (security keys, other devices). GApps set this in their
+         own overlay; microG provides the same component name. Without it, remote entries are
+         dropped and WebAuthn with a USB security key hangs. Ignored if the service is missing. -->
+    <string name="config_defaultCredentialManagerHybridService" translatable="false">com.google.android.gms/.auth.api.credentials.credman.service.RemoteService</string>
 </resources>
