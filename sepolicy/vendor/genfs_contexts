@@ -1,0 +1,3 @@
+# Touch boost (configs/power/powerhint.json, INTERACTION): sched_boost is
+# labeled plain proc by default; use the same label as the other sched tunables.
+genfscon proc /sys/kernel/sched_boost u:object_r:proc_sched:s0

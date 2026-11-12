@@ -5,6 +5,13 @@
 
 TARGET_IS_TABLET := true
 
+# Power: own powerhint.json (sm7325-common tablet file + touch boost on
+# INTERACTION, docs/log.md 2026-11-12 "Serie scroll_teile"). The first
+# PRODUCT_COPY_FILES entry for a destination wins, and inherited entries are
+# inserted where inherit-product is called, so this must stay above it.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
 # call the common setup
 $(call inherit-product, device/samsung/sm7325-common/common.mk)
 

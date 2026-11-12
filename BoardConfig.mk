@@ -36,6 +36,7 @@ VENDOR_SECURITY_PATCH := 2025-06-01
 
 # SePolicy
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Properties
 # product.prop replaces the sm7325-common copy (phone values, duplicate

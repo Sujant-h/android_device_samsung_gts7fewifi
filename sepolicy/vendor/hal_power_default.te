@@ -1,0 +1,4 @@
+# Touch boost (configs/power/powerhint.json, INTERACTION)
+allow hal_power_default proc_sched:file rw_file_perms;
+allow hal_power_default vendor_sysfs_msm_perf:dir search;
+allow hal_power_default vendor_sysfs_msm_perf:file rw_file_perms;
