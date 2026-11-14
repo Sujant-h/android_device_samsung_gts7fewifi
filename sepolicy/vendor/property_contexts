@@ -1,0 +1,7 @@
+# Samsung bootloader serials, not readable by apps (see property.te)
+ro.boot.ap_serial       u:object_r:vendor_sec_serial_prop:s0 exact
+ro.boot.cp_serial       u:object_r:vendor_sec_serial_prop:s0 exact
+ro.boot.cpuid           u:object_r:vendor_sec_serial_prop:s0 exact
+ro.boot.em.did          u:object_r:vendor_sec_serial_prop:s0 exact
+ro.boot.sec_serialno    u:object_r:vendor_sec_serial_prop:s0 exact
+ro.boot.un              u:object_r:vendor_sec_serial_prop:s0 exact

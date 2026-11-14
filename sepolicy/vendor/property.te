@@ -1,0 +1,4 @@
+# Samsung bootloader serials (ro.boot.ap_serial, ro.boot.em.did, ...). Unlabeled they
+# fall into bootloader_prop, which every domain (apps included) may read: hardware IDs
+# that survive a factory reset. vendor_internal_prop keeps them away from coredomain.
+vendor_internal_prop(vendor_sec_serial_prop)
