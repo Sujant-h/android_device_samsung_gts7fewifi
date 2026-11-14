@@ -6,4 +6,8 @@
 <resources>
     <!-- Do not translate. Default access point SSID used for tethering -->
     <string name="wifi_tether_configure_ssid_default" translatable="false">Galaxy Tab S7 FE</string>
+
+    <!-- New random MAC on every connection to open networks (already connected once, no
+         captive portal) instead of one persistent random MAC per SSID -->
+    <bool name="config_wifiAllowNonPersistentMacRandomizationOnOpenSsids" translatable="false">true</bool>
 </resources>
