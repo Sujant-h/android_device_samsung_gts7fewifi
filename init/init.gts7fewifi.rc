@@ -37,68 +37,7 @@ on post-fs-data
     mkdir /data/vendor/gps 0771 system system
     chown system system /data/vendor/gps
 
-on init
-# setup cgroup freezer for freecess
-    mkdir /dev/freezer
-    mount cgroup none /dev/freezer freezer
-    mkdir /dev/freezer/frozen
-    mkdir /dev/freezer/thaw
-    write /dev/freezer/frozen/freezer.state FROZEN
-    write /dev/freezer/thaw/freezer.state THAWED
-
-# MARs for freecess
-    chown system system /dev/freezer
-    chown system system /dev/freezer/frozen
-    chown system system /dev/freezer/frozen/tasks
-    chown system system /dev/freezer/frozen/cgroup.procs
-    chown system system /dev/freezer/frozen/freezer.state
-    chown system system /dev/freezer/thaw
-    chown system system /dev/freezer/thaw/tasks
-    chown system system /dev/freezer/thaw/cgroup.procs
-
-# MARs for freecess
-    chmod 0644 /dev/freezer/frozen/tasks
-    chmod 0644 /dev/freezer/frozen/cgroup.procs
-    chmod 0644 /dev/freezer/frozen/freezer.state
-    chmod 0644 /dev/freezer/thaw/tasks
-    chmod 0644 /dev/freezer/thaw/cgroup.procs
-
-# SDHMS Slowdown : Freezer
-    mkdir /dev/freezer/abnormal
-    write /dev/freezer/abnormal/freezer.state THAWED
-    chown system system /dev/freezer/abnormal
-    chown system system /dev/freezer/abnormal/tasks
-    chown system system /dev/freezer/abnormal/cgroup.procs
-    chown system system /dev/freezer/abnormal/freezer.state
-    chmod 0644 /dev/freezer/abnormal/tasks
-    chmod 0644 /dev/freezer/abnormal/cgroup.procs
-    chmod 0644 /dev/freezer/abnormal/freezer.state
-
-#SystemPerformance - ActivityManagerPerformance
-    setprop sys.config.amp_to_app_switch 6000
-
 on boot
-# SDHMS Slowdown : Cpuset
-    mkdir /dev/cpuset/abnormal
-    write /dev/cpuset/abnormal/cpus 0-3
-    copy /dev/cpuset/mems /dev/cpuset/abnormal/mems
-
-    chown system system /dev/cpuset/abnormal
-    chown system system /dev/cpuset/abnormal/tasks
-    chown system system /dev/cpuset/abnormal/cpus
-    chmod 0664 /dev/cpuset/abnormal/tasks
-    chmod 0664 /dev/cpuset/abnormal/cpus
-
-    mkdir /dev/cpuset/moderate
-    write /dev/cpuset/moderate/cpus 0-2
-    copy /dev/cpuset/mems /dev/cpuset/moderate/mems
-
-    chown system system /dev/cpuset/moderate
-    chown system system /dev/cpuset/moderate/tasks
-    chown system system /dev/cpuset/moderate/cpus
-    chmod 0664 /dev/cpuset/moderate/tasks
-    chmod 0664 /dev/cpuset/moderate/cpus
-
 #Performance
     chown root system /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
     chmod 0664 /sys/class/devfreq/soc:qcom,cpu4-cpu-ddr-latfloor/min_freq
@@ -110,9 +49,6 @@ on boot
 # SWAP
 on boot
     write /proc/sys/vm/page-cluster 0
-
-on property:sys.sysctl.zram_balance_ratio=*
-    write /sys/module/zram/parameters/zram_balance_ratio ${sys.sysctl.zram_balance_ratio}
 
 # Heap: sm7325-common/init.target.rc sets heapgrowthlimit 512m for
 # vendor.display.lcd_density=640 (phone panels). The tablet reports 640 as well
