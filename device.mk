@@ -5,6 +5,9 @@
 
 TARGET_IS_TABLET := true
 
+# Stock T733XXS9DYF1 does not declare android.hardware.audio.pro
+TARGET_EXCLUDES_PRO_AUDIO := true
+
 # Power: own powerhint.json (sm7325-common tablet file + touch boost on
 # INTERACTION, docs/log.md 2026-11-12 "Serie scroll_teile"). The first
 # PRODUCT_COPY_FILES entry for a destination wins, and inherited entries are
