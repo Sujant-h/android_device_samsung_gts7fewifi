@@ -1,7 +1,8 @@
 # All blobs are from T733XXS9DYF1 (U), unless pinned
 
 # Audio
-vendor/etc/dolby/dax-default.xml
+# dax-default.xml angepasst (Dynamic/Voice ruhiger, Vendor-Repo 33bb822), deshalb gepinnt
+vendor/etc/dolby/dax-default.xml|16d1a91f6ea0258d7c403099f564736a1ddf21d0
 vendor/etc/SoundBoosterParam.txt
 vendor/firmware/cs35l45-dsp1-spk-prot-calib.bin
 vendor/firmware/cs35l45-dsp1-spk-prot.bin
