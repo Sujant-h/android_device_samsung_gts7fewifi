@@ -11,6 +11,12 @@ include device/samsung/sm7325-common/BoardConfigCommon.mk
 BOARD_RECOVERYIMAGE_PARTITION_SIZE    := 101584896
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 69206016
 
+# super: 8325693440 on the SM-T733 (blockdev --getsize64), not the A52s
+# 10643046400. The group leaves 4 MiB for the LP metadata, otherwise a full
+# OTA that outgrows the device fails only after remove_all_groups.
+BOARD_SUPER_PARTITION_SIZE            := 8325693440
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 8321499136
+
 # Kernel
 TARGET_KERNEL_CONFIG        := vendor/lineage-gts7fewifi_defconfig \
                                vendor/mglru.config
