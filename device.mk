@@ -60,6 +60,17 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.lmk.swap_compression_ratio=2
 
+# Updater: one JSON per variant in Sujant-h/gts7fewifi-releases (updater/),
+# written by gts7fe-build scripts/updater-json.py. microG builds (WITH_GMS)
+# and vanilla builds must not offer each other's packages.
+ifeq ($(WITH_GMS),true)
+GTS7FEWIFI_UPDATER_VARIANT := microg
+else
+GTS7FEWIFI_UPDATER_VARIANT := vanilla
+endif
+PRODUCT_PRODUCT_PROPERTIES += \
+    lineage.updater.uri=https://raw.githubusercontent.com/Sujant-h/gts7fewifi-releases/main/updater/{device}-$(GTS7FEWIFI_UPDATER_VARIANT).json
+
 # Init files
 PRODUCT_PACKAGES += \
     init.gts7fewifi.rc \
