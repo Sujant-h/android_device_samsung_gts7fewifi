@@ -21,6 +21,12 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 8321499136
 TARGET_KERNEL_CONFIG        := vendor/lineage-gts7fewifi_defconfig \
                                vendor/mglru.config
 
+# 1 MiB (CONFIG_LOG_BUF_SHIFT=20) holds only minutes of dmesg: the
+# charger and fuel gauge drivers log several hundred lines per minute
+# while on USB, so the boot messages are gone soon after boot. The
+# smaller log_buf_len=256K from the SoC DT is ignored either way.
+BOARD_KERNEL_CMDLINE += log_buf_len=4M
+
 # Kernel modules
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
 BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.recovery))
