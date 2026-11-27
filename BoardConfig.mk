@@ -55,3 +55,13 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 TARGET_PRODUCT_PROP := $(filter-out $(COMMON_PATH)/product.prop,$(TARGET_PRODUCT_PROP))
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
+# HWUI renderer: Skia-Vulkan instead of OpenGL, opt-in (WITH_HWUI_VULKAN=true), default off.
+# TARGET_USES_VULKAN is what build/make/core/sysprop_config.mk and soong's gen_build_prop.py write to
+# ro.hwui.use_vulkan (empty = OpenGL); nothing else depends on it. Measured on this tablet (4 GB, Adreno 642L,
+# gts7fe-build docs/log.md 2026-11-27, series hwui + hwui_scroll): Vulkan is stable, but PSI full +15 %, app
+# switch time +10 %, file cache -15 %, +30-45 MB GPU driver memory, scrolling jank only ~9 % lower (not
+# significant). Therefore not the default for public releases; kept for the maintainer's own build.
+ifeq ($(WITH_HWUI_VULKAN),true)
+TARGET_USES_VULKAN := true
+endif
