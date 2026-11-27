@@ -47,7 +47,6 @@ TARGET_OTA_ASSERT_DEVICE := gts7fewifi
 VENDOR_SECURITY_PATCH := 2025-06-01
 
 # SePolicy
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Properties
